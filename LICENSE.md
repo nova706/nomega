@@ -2,6 +2,9 @@ MIT License
 
 Copyright (c) 2017 David Hamilton
 
+Based on Onion Omega – FireI2CLCD Lib from David Stein at http://davidstein.cz/onion-omega-firei2clcd-lib/
+Based on RPI I2C backpack from Michael Horne at http://www.recantha.co.uk/blog/?p=4849
+
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
