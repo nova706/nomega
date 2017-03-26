@@ -51,7 +51,7 @@ Rs = 0b00000001  # Register select bit
 class Lcd:
 
     # Initializes objects and lcd. If not supplied, uses default address 0x3f
-    def __init__(self, address=0x3f):
+    def __init__(self, address='0x3f'):
         self.address = int(address, 0)
         self.lcd_device = i2c_lib.I2cDevice(self.address)
 
