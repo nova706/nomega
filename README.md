@@ -51,3 +51,18 @@ i2cdetect -y 0
 70: -- -- -- -- -- -- -- --
 ```
 > My Omega 2 never seemed to show me the address. I still don't fully understand this. By default the LCD that ships with the starter kit is at address 0x3f.
+
+## Onion Cloud Usage
+
+* The file exec command can be used to call the CLI scripts directly
+```sh
+curl -H "Content-Type: application/json" -H "X-API-KEY: <Your_Api_Key>" -X POST -d '{"command":"python","params":["/root/nomega/lcd.py","--line1=Hello World"],"env":""}' https://api.onion.io/v1/devices/<Your_Device_ID>/file/exec
+```
+> Obviously this is not very elegant. I'm still trying to find a way to call the REST interface more directly
+
+## TODO
+
+* Add service interface to allow more direct REST calls to the tools
+* Allow the LCD driver to take a single string and break it as needed to fit the screen
+* Add scrolling text to the options to the LCD driver
+* Keep adding more utilities
