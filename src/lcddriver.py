@@ -49,16 +49,18 @@ Rs = 0b00000001  # Register select bit
 
 
 class Lcd:
-    # initializes objects and lcd
-    def __init__(self, address):
+
+    # Initializes objects and lcd. If not supplied, uses default address 0x3f
+    def __init__(self, address=0x3f):
         self.address = int(address, 0)
-        self.lcdBacklight = LCD_BACKLIGHT  # default status
+        self.lcd_device = i2c_lib.I2cDevice(self.address)
+
+        # lcd default status
+        self.lcdBacklight = LCD_BACKLIGHT
         self.line1 = ""
         self.line2 = ""
         self.line3 = ""
         self.line4 = ""
-
-        self.lcd_device = i2c_lib.I2cDevice(self.address)
 
         self.lcd_write(0x03)
         self.lcd_write(0x03)
@@ -71,7 +73,7 @@ class Lcd:
         self.lcd_write(LCD_ENTRY_MODE_SET | LCD_ENTRY_LEFT)
         sleep(0.2)
 
-    # clocks EN to latch command
+    # Creates an EN pulse (using I2C) to latch previously sent command
     def lcd_strobe(self, data):
         self.lcd_device.write_cmd(data | En | self.lcdBacklight)
         sleep(.0005)
@@ -79,15 +81,21 @@ class Lcd:
         sleep(.0001)
 
     def lcd_write_four_bits(self, data):
+
+        # write four data bits along with backlight state to the screen
         self.lcd_device.write_cmd(data | self.lcdBacklight)
+
+        # perform strobe to latch the data that was sent
         self.lcd_strobe(data)
 
-    # write a command to lcd
+    # Write an 8-bit command to lcd
     def lcd_write(self, cmd, mode=0):
+
+        # Due to how the I2C backpack expects data, send the top four and bottom four bits of the command separately
         self.lcd_write_four_bits(mode | (cmd & 0xF0))
         self.lcd_write_four_bits(mode | ((cmd << 4) & 0xF0))
 
-    # put string function
+    # Display a string on a specified line of the screen
     def lcd_display_string(self, string, line):
         if line == 1:
             self.line1 = string
@@ -105,7 +113,12 @@ class Lcd:
         for char in string:
             self.lcd_write(ord(char), Rs)
 
-    # clear lcd and set to home
+    # Display a list of strings on the LCD
+    def lcd_display_string_list(self, strings):
+        for x in range(0, min(len(strings), 4)):
+            self.lcd_display_string(strings[x], x + 1)
+
+    # Clear lcd and set to home
     def lcd_clear(self):
         self.lcd_write(LCD_CLEAR_DISPLAY)
         self.lcd_write(LCD_RETURN_HOME)
@@ -116,11 +129,12 @@ class Lcd:
         self.lcd_display_string(self.line3, 3)
         self.lcd_display_string(self.line4, 4)
 
-    # def backlight
+    # Turn on the backlight
     def backlight_on(self):
         self.lcdBacklight = LCD_BACKLIGHT
         self.refresh()
 
+    # Turn off the backlight
     def backlight_off(self):
         self.lcdBacklight = LCD_NO_BACKLIGHT
         self.refresh()
