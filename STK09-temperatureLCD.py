@@ -3,7 +3,7 @@ import src.oneWire
 from src.temperatureSensor import TemperatureSensor
 
 # default address of i2c backpack is 0x3f by default
-lcdAddress = 0x3f
+lcdAddress = "0x3f"
 
 # setup one wire temperature sensor object
 oneWireGpio = 19  # set the GPIO that we've connected the sensor to
