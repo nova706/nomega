@@ -1,12 +1,19 @@
-# nomega
-Tools for the Omega2
+# Python Scripts
+Python scripts for the Omega2
 
-## Get Started with Python Scripts
+## Get Started
 
 1. Install [Onion I2C Python Library](https://wiki.onion.io/Documentation/Libraries/I2C-Python-Module)
 ```sh
 opkg update
 opkg install git git-http python pyOnionI2C
+```
+
+2. Clone the GitHub project
+```sh
+cd /root
+git clone https://github.com/nova706/nomega.git
+cd nomega
 ```
 
 ## LCD CLI Usage
