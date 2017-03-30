@@ -6,9 +6,6 @@
     "author": {
         "name": "David Hamilton"
     },
-    "dependencies": {
-        "ps-node": "0.1.5"
-    },
     "scripts": {
         "start": "node ./server.js &",
         "stop": "kill -2 $(pgrep nomegaApp)"
