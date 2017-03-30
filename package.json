@@ -7,7 +7,7 @@
         "name": "David Hamilton"
     },
     "scripts": {
-        "start": "./server.js",
+        "start": "node ./server.js",
         "stop": "pkill --signal SIGINT nomegaApp"
     }
 }
