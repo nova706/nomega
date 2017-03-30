@@ -6,8 +6,11 @@
     "author": {
         "name": "David Hamilton"
     },
+    "dependencies": {
+        "ps-node": "0.1.5"
+    },
     "scripts": {
-        "start": "node ./server.js",
-        "stop": "pkill --signal SIGINT nomegaApp"
+        "start": "node ./server.js &",
+        "stop": "node ./stop.js"
     }
 }

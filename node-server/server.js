@@ -12,3 +12,9 @@ var server = http.createServer(handleRequest);
 server.listen(PORT, function(){
     console.log("Server listening on: http://localhost:%s", PORT);
 });
+
+process.on('SIGINT', function() {
+    console.log("\nGracefully shutting down from SIGINT\n");
+    server.close();
+    process.exit();
+});
