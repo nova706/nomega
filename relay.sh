@@ -11,6 +11,7 @@ function stop_server
 {
     echo "Stopping Node processes"
     npm stop
+
 }   # end of stop_server
 
 if [ "$1" = "start" ]
