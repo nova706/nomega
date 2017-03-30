@@ -11,6 +11,6 @@
     },
     "scripts": {
         "start": "node ./server.js &",
-        "stop": "node ./stop.js"
+        "stop": "kill -2 $(pgrep nomegaApp)"
     }
 }
