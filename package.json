@@ -1,0 +1,13 @@
+{
+    "name": "Nomega",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Tools for the Onion Omega 2",
+    "author": {
+        "name": "David Hamilton"
+    },
+    "scripts": {
+        "start": "server.js",
+        "stop": "pkill --signal SIGINT nomegaApp"
+    }
+}

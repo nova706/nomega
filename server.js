@@ -1,5 +1,6 @@
 var http = require('http');
 
+process.title = "nomegaApp";
 const PORT=8080;
 
 function handleRequest(request, response){
