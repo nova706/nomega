@@ -1,8 +1,7 @@
 var ps = require('ps-node');
 
 ps.lookup({
-    command: "node",
-    arguments: "./server.js"
+    command: "nomegaApp"
 }, function (err, resultList) {
     if (err) {
         throw err;
