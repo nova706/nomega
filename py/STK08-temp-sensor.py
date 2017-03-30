@@ -1,7 +1,8 @@
 # import modules and classes
 import time
-from src.temperatureSensor import TemperatureSensor
+
 from src import oneWire
+from src.temperatureSensor import TemperatureSensor
 
 # setup onewire and polling interval
 oneWireGpio = 19  # set the sensor GPIO

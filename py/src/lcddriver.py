@@ -1,5 +1,6 @@
-import i2c_lib
 from time import *
+
+import i2c_lib
 
 # commands
 LCD_CLEAR_DISPLAY = 0x01

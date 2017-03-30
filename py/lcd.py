@@ -1,8 +1,6 @@
 from optparse import OptionParser
 from types import NoneType
 
-import src.lcddriver
-
 # parse arguments
 parser = OptionParser()
 # parse values
@@ -31,7 +29,7 @@ parser.add_option("--backlight-off", action="store_true", dest="backlight_off", 
 (options, args) = parser.parse_args()
 
 # process argument - address
-lcd = src.lcddriver.Lcd(options.address)
+lcd = python.src.lcddriver.Lcd(options.address)
 
 # process argument - persistent
 if not options.persistent:

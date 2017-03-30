@@ -1,5 +1,3 @@
-import src.lcddriver
-import src.oneWire
 from src.temperatureSensor import TemperatureSensor
 
 # default address of i2c backpack is 0x3f by default
@@ -13,13 +11,13 @@ pollingInterval = 1  # seconds
 # function to read the temperature from the One-Wire Temperature Sensor
 def get_temp():
     # check if 1-Wire was setup in the kernel
-    if not src.oneWire.setup_one_wire(str(oneWireGpio)):
+    if not python.src.oneWire.setup_one_wire(str(oneWireGpio)):
         print "Kernel module could not be inserted. Please reboot and try again."
         return -1
 
     # get the address of the temperature sensor
     # it should be the only device connected in this experiment
-    sensor_address = src.oneWire.scan_one_address()
+    sensor_address = python.src.oneWire.scan_one_address()
 
     sensor = TemperatureSensor("oneWire", {"address": sensor_address, "gpio": oneWireGpio})
     if not sensor.ready:
@@ -32,7 +30,7 @@ def get_temp():
 # function to display the temperature on the LCD screen
 def display_temp(temp):
     # setup LCD
-    lcd = src.lcddriver.Lcd(lcdAddress)
+    lcd = python.src.lcddriver.Lcd(lcdAddress)
     lcd.backlight_on()
 
     lcd.lcd_display_string_list([

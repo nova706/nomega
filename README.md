@@ -31,7 +31,7 @@ cd nomega
 
 ### Example:
 ```sh
-python lcd.py -a 0x3f --line1="Onion LCD LIB" --line2="Hellow World"
+python py/lcd.py -a 0x3f --line1="Onion LCD LIB" --line2="Hellow World"
 ```
 
 ### Troubleshooting:
@@ -56,7 +56,7 @@ i2cdetect -y 0
 
 * The file exec command can be used to call the CLI scripts directly
 ```sh
-curl -H "Content-Type: application/json" -H "X-API-KEY: <Your_Api_Key>" -X POST -d '{"command":"python","params":["/root/nomega/lcd.py","--line1=Hello World"],"env":""}' https://api.onion.io/v1/devices/<Your_Device_ID>/file/exec
+curl -H "Content-Type: application/json" -H "X-API-KEY: <Your_Api_Key>" -X POST -d '{"command":"python","params":["/root/nomega/py/lcd.py","--line1=Hello World"],"env":""}' https://api.onion.io/v1/devices/<Your_Device_ID>/file/exec
 ```
 > Obviously this is not very elegant. I'm still trying to find a way to call the REST interface more directly
 
