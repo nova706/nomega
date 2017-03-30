@@ -1,5 +1,5 @@
 # NodeJS HTTP Server
-NodeJS HTTP server for the Omega2
+NodeJS HTTP server for the Omega 2
 
 ## Get Started
 

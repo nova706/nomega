@@ -1,5 +1,5 @@
 # Python Scripts
-Python scripts for the Omega2
+Python scripts for the Omega 2
 
 ## Get Started
 
